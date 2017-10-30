@@ -1,0 +1,79 @@
+/* Inspired by distill.pub */
+body {
+	font-family: HoeflerText-Regular,Cochin,Georgia,serif;
+}
+
+.article {
+	width: 640px;
+	margin-left: auto;
+	margin-right:auto;
+}
+
+.centered-text {
+	text-align: center;
+}
+.faded-text {
+	color: rgba(0, 0, 0, 0.5);
+}
+.article p {
+	font-size:20px;
+	line-height: 31px;
+	color:rgba(0, 0, 0, 0.8);;
+}
+
+.title-top {
+	margin-bottom: 0px;
+	color: #ff8686;
+}
+.title-bottom {
+	margin-top:0px;
+	color: rgba(0,0,0,0.5)!important;
+}
+
+.article h1 {
+	font-size:48px;
+	font-weight: 100;
+	font-family: 'Comfortaa', cursive;
+}
+.article h2 {
+	font-weight: 100;
+}
+
+
+
+hr {
+	border:none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	margin-top: 60px;
+	margin-bottom: 60px;
+}
+
+blockquote {
+	font-family: Georgia, serif;
+	font-size: 18px;
+	font-style: italic;
+	margin: 0.25em 0;
+	padding: 0.25em 40px;
+	line-height: 1.45;
+	position: relative;
+	color: #383838;
+}
+blockquote:before {
+	display: block;
+	content: "\201C";
+	font-size: 80px;
+	position: absolute;
+	left: -20px;
+	top: -20px;
+	color: #7a7a7a;
+}
+blockquote cite {
+	color: #999999;
+	font-size: 14px;
+	display: block;
+	margin-top: 5px;
+}
+ 
+blockquote cite:before {
+	content: "\2014 \2009";
+}
