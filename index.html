@@ -6,12 +6,17 @@
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"> 
 </head>
 <body>
+<!-- Parsing CSV's -->
+<script src="papaparse.min.js"></script>
+
 <div class="article">
-	<h1 class="centered-text title-top">7 Second Survey Series</h1>
+	<h1 class="centered-text title-top"><a href="/">7 Second Survey Series</a></h1>
 	<p class="centered-text title-bottom faded-text"> <i>The questions no one cares about, but everyone's wondering</i></p>
 	</br>
-	<!-- <p>The St. Olaf community has submitted <b>0</b> answers to <b>0</b> questions so far.</p>-->
-	<p>No data yet! Once the results from the first question are compiled, they will be posted here.</p>
+	<p>The St. Olaf community has submitted <span id="num_answers">___</span> answers to <span id="num_questions">_</span> questions so far. Raw data available  <a href="https://github.com/StoDevX/7-second-surveys">here</a>.</p>
+	<ul id="archive-list">
+		<li><a href="articles/1_Pizza_And_Ketchup.html">#1 Do you put ketchup on your pizza?</a> <span class="list-date">&ndash; September 30th 2017</span></li>
+	</ul>
 	<hr>
 	<h2>What's this all about?</h2>
 	<p>Every Monday, I send out a super short anonymous survey to the St. Olaf community. All responses are collected <a href="https://github.com/StoDevX/7-second-surveys">here</a> and are free to use for academic purposes, for sheer curiosity, or to settle a drunk bet. </p>
@@ -22,5 +27,27 @@
 	<h2>I have an idea! Who do I talk to?</h2>
 	<p>Awesome! I'm always looking for ideas for more questions! If you've got a question that's highly quirky, oddly specific, or deeply unprofound, shoot me an email at shehat1@stolaf.edu</p>
 </div>
+
+<script type="text/javascript">
+	// Count how many questions and answers and update webpage
+	var files = ["1_Pizza_And_Ketchup.csv"];
+	var total_answers = 0;
+	document.querySelector("#num_questions").innerHTML = String(files.length);
+	for(var i=0;i<files.length;i++){
+		var filename = "data/" + files[i];
+
+		fetch(filename)
+		.then(res => res.blob())
+		.then(res => {
+			Papa.parse(res, {
+				complete: function(results) {
+					total_answers += results.data.length - 1; // I subtract one for the header
+					document.querySelector("#num_answers").innerHTML = String(total_answers);
+				}
+			});
+		});
+	} 
+</script>
+
 </body>
 </html>
