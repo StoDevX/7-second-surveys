@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>7 Second Surveys</title>
+	<link rel = "stylesheet" type = "text/css" href = "../style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"> 
+    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+    <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script src="../papaparse.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.5/howler.min.js"></script>
+   <style type="text/css">
+      #chartdiv {
+          max-width: 1100px;
+          height: 400px;
+          border: 1px solid #ddd;
+          margin: 0 auto;
+        }
+        #pain-expression {
+            color:rgb(202, 112, 112);;
+        }
+   </style>
+</head>
+<body>
+
+<div class="article">
+	<h1 class="centered-text title-top"><a href="/7-second-surveys">7 Second Survey Series</a></h1>
+	<p class="centered-text title-bottom faded-text"> <i>The questions no one cares about, but everyone's wondering</i></p>
+	</br>
+	<h1 id="story-title">Language of Pain</h1>
+	<span id="byline"><span id="minutes_read"></span> min read &ndash; November 6th 2017</span>
+	<p>The question was:</p>
+	<img src="media/language_pain_form.png">
+	<p>And I received a total of <b>89</b> responses in <b>12</b> different languages.</p>
+    <p>But instead of just showing a table of the various phonetic ways to express pain around the world, I thought it would be more fun to record myself performing the 46 unique grunts, yelps and swears that the St. Olaf community uses to express pain, and allow you to explore them for yourself!</p>
+    <p class="centered-text"><i>Warning: Some cultures do swear to express pain.</i></p>
+    <p class="centered-text"><span id="pain-expression">Click on a country to hear its expression of pain.</span>
+     <div id="chartdiv"></div>
+    <!-- 
+        
+        * Remove all ones whose language isn't in our list 
+        * Hovering over each country shows yo name of country and language it speaks
+        * Click on country plays a random sound and puts the text in a box on the map
+    -->
+    <p>As always, you can peruse the raw data <a href="https://github.com/StoDevX/7-second-surveys/tree/master/data">here</a>. </p>
+    <p>This was a lot of fun to record. In some of the samples you can hear the <i>smack</i> I did to try and trigger a real pain response and make these sounds more natural.</p>
+    <p>Something very interesting that I noticed was that <b>it was very difficult to get all the sounds triggered by the same physical response</b>. It's very hard to train yourself to say "Shit" upon getting slapped in the face. It just doesn't feel right. Which makes me wonder what <i>kind</i> of pain people filling out the survey were imagining when they filled it out, and whether that is the cause of some variance in sounds. I wonder if there would be a way to design a study to truly learn what different cultures & languages exclaim upon being slapped in the face (short of actually just walking around and doing that).</p>
+    <h1>Why Pain?</h1>
+    <p>I began thinking about this question during my freshman year. I was walking around the quad one day with a friend when I bumped into something. Of course I exclaimed, <i>"Ayy!"</i> which is the Arabic way of experssing pain. Upon realizing that I had accidentally said an Arabic word, I corrected myself, <i>"Oops, I mean, ouch!"</i> </p>
+    <p>Now my mono-lingual friend thought it was rather silly that I corrected myself. After all, "ouch" isn't really an English word, it's just a natural expression of pain. But the more I thought about it, the more I realized <b>there's really nothing "natural" about the three syllables making up the most common English expression of pain</b>.</p>
+    <p>Other non-native English speakers I've talked to about this survey have mentioned that they say ouch <i>only when they're in the US</i>!</p>
+    <p>The words you reach for instictively when you experience pain are interesting to me because it's like a window into how you think, with no masks or filters. What choice do you make when you're not making it consciously? I speak English fluently and am even more comfortable expressing myself in English than in Arabic. But I still owe my visceral reaction to pain to the place I grew up.</p>
+    <p>I can pretend to be a native English speaker all I want, but at the end of the day, all it takes to give me away is a slap on the face.</p>
+    <p><i>&ndash; Omar</i></p>
+  </div>
+	<!-- 
+	Pizza & Ketchup — 7 Second Surveys #1
+
+Why this question is important to me: the cultural shock, the quora answer
+My blunder with how I asked the question. The polish and egyptian anecdotes
+There’s more to it! A stacked bar chart of all US vs non-us answers. 
+Line plot of number of responses over time.
+Just inspecting the data by hand. Who are those 2 lovers? Also this one milk guy. Identity & pride. I think my next one will have more open fields.
+	-->
+</div>
+<script type="text/javascript">
+	// Compute how many minutes to read 
+	var wordCount = document.querySelector(".article").textContent.split(" ").length;
+	var minutes = Math.round(wordCount / 200);
+	document.querySelector("#minutes_read").innerHTML = String(minutes);
+	
+    /////////////////// MAPS //////////////////////
+    var hurtMap = {};
+    var textMap = {};
+                    
+
+    fetch("../data/2_Language_Of_Pain.csv")
+    .then(res => res.blob())
+    .then(res => {
+        Papa.parse(res, {
+            complete: function(results) {
+                var availableNumbers = [
+                1,2,3,4,6,8,9,10,11,13,14,15,16,17,19,20,22,24,25,28,30,33,
+                34,35,40,42,44,46,47,48,50,52,54,55,59,62,65,73,76,77,79,89
+                ]
+                for(var i=1;i<results.data.length;i++){
+                    var language = results.data[i][2];
+                    var key = i;
+                    
+                    var foundNumber = true;
+                    for(var j=0;j<availableNumbers.length;j++){
+                        if(i == availableNumbers[j]){
+                            break;
+                        }
+                        if(j == availableNumbers.length-1) foundNumber = false;
+                    }
+                    if(foundNumber){
+                        if(hurtMap[language] == undefined) {
+                            hurtMap[language] = [];
+                            textMap[language] = [];
+                        }
+                        
+                        textMap[language].push(results.data[i][1])
+                        hurtMap[language].push(key);
+                    }
+                }
+
+                fetch("media/countries.json",{
+                    method:'get'
+                })
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(countries){
+                    // Make a map out of the stuff we have 
+                    
+
+                    var languageMap = {};
+                    var disabled = [];
+
+                    for(var i=0;i<countries.length;i++){
+                        var country = countries[i];
+                        var name = country.name.common;
+                        var langKey;
+                        for(var key in country.name.native){
+                            langKey = key;
+                        }
+                        var language = country.languages[langKey]
+                        languageMap[name] = language;
+                        if(hurtMap[language] == undefined){
+                            disabled.push(country.cca2);
+                        }
+                    }
+
+
+                    initMaps(languageMap,disabled);
+                    
+                })
+            }
+        });
+    });
+
+    function initMaps(languageMap,disabled){
+
+        var disabledCountries = disabled;
+        var areaSettings = [];
+        for(var i=0;i<disabledCountries.length;i++){
+            var obj = {"id":disabledCountries[i],"balloonText": "","mouseEnabled":false,"color":'#e2e2e2'}
+            areaSettings.push(obj);
+        }
+        /**
+         * Create the map
+         */
+        var map = AmCharts.makeChart("chartdiv", {
+          "type": "map",
+          "theme": "light",
+          "projection": "eckert3",
+          "dataProvider": {
+            "map": "worldLow",
+            "getAreasFromMap": true,
+            "areas": areaSettings
+          },
+          "areasSettings": {
+            "selectedColor": "#CC0000",
+            "selectable": true
+          },
+          /**
+           * Add click event to track country selection/unselection
+           */
+          "listeners": [{
+            "event": "clickMapObject",
+            "method": function(e) {
+              
+              // Ignore any click not on area
+              if (e.mapObject.objectType !== "MapArea")
+                return;
+              
+              var area = e.mapObject;
+              var countryName = area.enTitle;
+              var language = languageMap[countryName];
+              var soundKeyArray = hurtMap[language];
+
+              var randIndex = Math.floor(Math.random()*soundKeyArray.length);
+              var soundKey = soundKeyArray[randIndex];
+              var soundFileName = "media/Pain/" + soundKey + ".wav";
+              var displayText = textMap[language][randIndex] + " &ndash; <i>" + language +"</i>"
+              document.querySelector("#pain-expression").innerHTML = displayText;
+
+              var sound = new Howl({
+                  src: [soundFileName]
+                });
+              sound.play();
+              
+              // Toggle showAsSelected
+              //area.showAsSelected = !area.showAsSelected;
+              //e.chart.returnInitialColor(area);
+              
+            }
+          }]
+        });
+
+        /**
+         * Function which extracts currently selected country list.
+         * Returns array consisting of country ISO2 codes
+         */
+        function getSelectedCountries() {
+          var selected = [];
+          for(var i = 0; i < map.dataProvider.areas.length; i++) {
+            if(map.dataProvider.areas[i].showAsSelected)
+              selected.push(map.dataProvider.areas[i].id);
+          }
+          return selected;
+        }
+    }
+	////////////////// END MAPS ////////////////////
+</script>
+</body>
+</html>

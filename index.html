@@ -14,10 +14,13 @@
 	<p class="centered-text title-bottom faded-text"> <i>The questions no one cares about, but everyone's wondering</i></p>
 	</br>
 	<p>The St. Olaf community has submitted <span id="num_answers">___</span> answers to <span id="num_questions">_</span> questions so far. Raw data available  <a href="https://github.com/StoDevX/7-second-surveys">here</a>.</p>
+	<!--
 	<p class="centered-text">This week's question is:</p>
-	<p class="centered-text"><a href="https://goo.gl/forms/PzxQIfVMwJeJr6Xo1">What language do you hurt in?</a></p>
+	<p class="centered-text"><a href=""></a></p>
+	-->
 	<p class="centered-text">Past Questions</p>
 	<ul id="archive-list">
+		<li><a href="articles/2_Language_Of_Pain.html">#2 What language do you hurt in?</a> <span class="list-date">&ndash; November 6th 2017</span></li>
 		<li><a href="articles/1_Pizza_And_Ketchup.html">#1 Do you put ketchup on your pizza?</a> <span class="list-date">&ndash; September 30th 2017</span></li>
 	</ul>
 	<hr>
@@ -33,7 +36,7 @@
 
 <script type="text/javascript">
 	// Count how many questions and answers and update webpage
-	var files = ["1_Pizza_And_Ketchup.csv"];
+	var files = ["1_Pizza_And_Ketchup.csv","2_Language_Of_Pain.csv"];
 	var total_answers = 0;
 	document.querySelector("#num_questions").innerHTML = String(files.length);
 	for(var i=0;i<files.length;i++){
