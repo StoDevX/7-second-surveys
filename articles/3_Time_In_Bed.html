@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>7 Second Surveys</title>
+	<link rel = "stylesheet" type = "text/css" href = "../style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"> 
+  <script src="../papaparse.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  
+  <meta charset="utf-8"/>
+  <style type="text/css">
+    #average {
+      color: #ff4d4d;
+    }
+    .ct-bar {
+      stroke-width: 60px
+  }
+  </style>
+</head>
+<body>
+
+<div class="article">
+	<h1 class="centered-text title-top"><a href="/7-second-surveys">7 Second Survey Series</a></h1>
+	<p class="centered-text title-bottom faded-text"> <i>The questions no one cares about, but everyone's wondering</i></p>
+	</br>
+	<h1 id="story-title">Time in Bed</h1>
+	<span id="byline"><span id="minutes_read"></span> min read &ndash; November 13th 2017</span>
+	<p>The question was:</p>
+  <img src="media/time_in_bed.png">
+  <p>On average, a member of the St. Olaf community spends about <span id="average"></span> awake in bed before they get up. Out of 111 participants,  just about half reported checking social media or doing something on their phone during that time. This is not too surprising. In fact, checking Facebook right before you go to bed and right after you wake up is such a prevalent trend that you can actually <a href="https://www.theverge.com/2016/2/29/11132016/facebook-sleep-tracker-messenger-activity">track people's sleep patterns just by monitoring their Facebook active times</a>.</p>
+  <p>Averages can only tell you so much though (some people reported spending 7+ hours in bed). Here's a breakdown of how many hours people reported staying in bed for:</p>
+  <div class="ct-chart ct-perfect-fourth"></div>
+  <h1>Why?</h1>
+  <p>When I was a kid, I used to think having a hard time getting out of bed was just something I personally struggled with. Once I realized this was something almost everyone I knew complained about, I started counting: how much of my life was I wasting in this groggy half-asleep lazy haze? How many hours were we all collectively spending in bed like this? I was obsessed.</p>
+  <p>My dream was always to be that kind of person who would get up immediately as soon as I woke up. If I could save that hour every morning, that was almost like an extra full 7 hour work day per week! </p>
+  <p>What had always been peculiar to me was that this seemed to be something that everyone agreed was a bad thing. Everyone seemed to admit to spending longer than they intended scrolling through their newsfeed in the morning.</p> 
+  <p>And yet, it wasn't something most people seemed capable of changing.</p>
+  <h1>Is it Possible to Get Up Right Away?</h1>
+  <p>"Of course!" you say. And you probably do get up right away when you need to, but what would it take to <i>always</i> get up as soon as you wake up? To waste absolutely no time?</p>
+  <p>I had tried to will myself out of bed in the mornings. Sometimes it would work, but most of the time it didn't. I began getting more obsessed. I embarked on this semi-militant campaign against overstaying in bed throughout my childhood. It sounds stupid. And it is. We all <i>know</i> we can get up if we want to.</p>
+  <p>But then, why don't you?</p>
+  <p>This tension between knowing full well that you are capable of something and wanting to do it, but not actually doing it, kind of reminds me of <a href="https://web.archive.org/web/20140212041134/http://www.morganoxley.com/2012/09/18/richard-feynman-on-hypnosis/">Richard Feynmann's account of what's it like to be hypnotized</a>. It always felt like he had full control of his actions throughout and could choose to disobey &ndash;  he just didn't. </p>
+  <p>I began regarding overstaying in bed as absolute evil. I had to fight this. I would not be hypnotized. I tried various things throughout my life. These have been the most succesful:</p>
+  <ul>
+    <li>Move the phone away from my bedside. I can only reach it if I physically get out of bed.</li>
+    <li>Emotionally prepare myself to jump out of bed the moment I regain consciousness. </li>
+  </ul>
+  <p>The first is such a small change, with such drastic quality-of-life implications. Every day is wholly better knowing I wasted no time and going about my morning routine without the daily flood of messages & newsposts. </p>
+  <p>The second requires a lot more practice & patience. I've found that you can train yourself to get out of bed before your mind has a chance to really think about how tired you feel and how you'd much rather stay in. You would then be acting more on instinct and disregarding the arguments in your head. (I've found this to be good life advice in general: knowing what the right decision is and keeping it in your mind is important so that when the time comes, you can make this decision, even if you don't feel like it).</p>
+  <h1>What People Do in Bed</h1>
+  <p>So what all do people do in bed during that time? As always, the full data is available <a href="https://github.com/StoDevX/7-second-surveys/tree/master/data">here</a>. Here are some from the people who spend over an hour in bed:</p>
+  <blockquote>Just lay in bed, go back to sleep, or be on my phone. </blockquote>
+  <blockquote>Phone, try to go back to sleep, Netflix</blockquote>
+  <blockquote>Listening to music, laying on the bed but not actually doing anything.</blockquote>
+  <blockquote>Read articles, respond to emails</blockquote>
+  <p>What I was surprised to learn from this analysis was that staying in bed was <i>not</i> the absolute evil I took it be. Some people actually had a pleasant experience during that time:</p>
+  <blockquote>eat breakfast (served by husband); read books; talk with husband and son; play with cats; catch up on email.</blockquote>
+  <blockquote>Parent. I can't not wake up too early. So I just work to stay there and enjoy the quiet.</blockquote>
+  <p>At this point you'd think I'd get better at phrasing these questions to avoid confusion. The question <i>"What do you do?"</i> was interpreted by a lot of people to mean <i>"what do you do in life"</i> as opposed to <i>"in bed"</i>. The one person who wrote that they spend <b>8 hours</b> in bed said they do <i>"BM Music Major Vocal Performance"</i>.</p>
+  <p>I fear we'll never know what this music major does in bed for 8 hours...</p>
+  <p><i>&ndash; Omar</i></p>
+	
+
+</div>
+<script type="text/javascript">
+	// Compute how many minutes to read 
+	var wordCount = document.querySelector(".article").textContent.split(" ").length;
+	var minutes = Math.round(wordCount / 200);
+	document.querySelector("#minutes_read").innerHTML = String(minutes);
+	
+  var GraphData = function(data){
+    var series = [0,0,0,0,0];
+    for(var i=0;i<data.length;i++){
+      var time = data[i][0];
+      if(time <= 5)
+        series[0] ++;
+      else if(time > 5 && time <= 30)
+        series[1] ++;
+      else if(time > 30 && time <= 60)
+        series[2] ++;
+      else if(time > 60 && time <= 120)
+        series[3] ++;
+      else if(time > 120)
+        series[4] ++;
+    }
+    console.log(series)
+
+    new Chartist.Bar('.ct-chart', {
+      labels: ['Less than 5 min','About 30 min','About 1 hour','About 2 hours','More than 2 hours'],
+      series: [ series ]
+      }, {
+      seriesBarDistance: 1,
+      axisX: {
+        offset: 60
+      },
+      axisY: {
+        offset: 80,
+        labelInterpolationFnc: function(value) {
+          return value + ' people'
+        },
+        onlyInteger: true,
+        scaleMinSpace: 15
+      }
+    });
+  }
+
+  // Load the clean data! 
+  fetch("../data/3_Time_In_Bed_Clean.csv")
+    .then(res => res.blob())
+    .then(res => {
+        Papa.parse(res, {
+            complete: function(results) { 
+              // Compute average 
+              var sum = 0;
+              for(var i=1;i<results.data.length;i++){
+                var minutes_in_bed = results.data[i][0];
+                sum += Number(minutes_in_bed);
+              }
+              var average = sum / (results.data.length - 1);
+              // Convert to hours
+              document.querySelector("#average").innerHTML = "<b>" + average.toFixed(0) + " minutes</b>";
+
+              // Graph it 
+              GraphData(results.data)
+
+
+            }
+          })
+     })
+        
+
+
+</script>
+</body>
+</html>
