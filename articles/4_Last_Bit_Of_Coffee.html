@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>7 Second Surveys</title>
+	<link rel = "stylesheet" type = "text/css" href = "../style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"> 
+  <script src="../papaparse.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <script src="lib/chartist-plugin-legend.js"></script>
+  
+  <meta charset="utf-8"/>
+  <style type="text/css">
+         .ct-chart {
+           position: relative;
+       }
+       .ct-legend {
+           position: relative;
+           z-index: 10;
+           list-style: none;
+           text-align: center;
+           top:-30px;
+       }
+       .ct-legend li {
+           position: relative;
+           padding-left: 23px;
+           margin-right: 10px;
+           margin-bottom: 3px;
+           cursor: pointer;
+           display: inline-block;
+       }
+       .ct-legend li:before {
+           width: 12px;
+           height: 12px;
+           position: absolute;
+           left: 0;
+           content: '';
+           border: 3px solid transparent;
+           border-radius: 2px;
+       }
+       .ct-legend li.inactive:before {
+           background: transparent;
+       }
+       .ct-legend.ct-legend-inside {
+           position: absolute;
+           top: 0;
+           right: 0;
+       }
+       .ct-legend.ct-legend-inside li{
+           display: block;
+           margin: 0;
+       }
+       .ct-legend .ct-series-0:before {
+           background-color: #d70206;
+           border-color: #d70206;
+       }
+       .ct-legend .ct-series-1:before {
+           background-color: #f05b4f;
+           border-color: #f05b4f;
+       }
+       .ct-legend .ct-series-2:before {
+           background-color: #f4c63d;
+           border-color: #f4c63d;
+       }
+       .ct-horizontal {
+        font-size: 25px;
+        color: black;
+       }
+  </style>
+</head>
+<body>
+
+<div class="article">
+	<h1 class="centered-text title-top"><a href="/7-second-surveys">7 Second Survey Series</a></h1>
+	<p class="centered-text title-bottom faded-text"> <i>The questions no one cares about, but everyone's wondering</i></p>
+	</br>
+	<h1 id="story-title">Last Bit of Coffee</h1>
+	<span id="byline"><span id="minutes_read"></span> min read &ndash; November 20th 2017</span>
+	<p>The question was:</p>
+  <img src="media/last_bit_of_coffee.png">
+  <p>And like all of these questions, I had very personal reasons for wondering this. I will now publicly admit, for the first time in my life, that I, Omar Sameh Mahmoud Ahmed Shehata, do indeed never drink the last 10% of coffee.<p>
+  <p>This has been something that has always perplexed my girlfriend. She couldn't understand why I was always wasting so much coffee. <i>"Why not just get less coffee?"</i> she'd ask, as if it was so simple. I shared my dilemma with those closest to me, and no one could understand. <i>"Why wouldn't you just drink it all?"</i> they'd say, as if it was somehow my fault. As if this was just some silly quirk.</p>
+  <p>I felt like an outcast. Alone. Wondering if anyone out there in the world (or at least on campus) could understand what I had to go through.</p>
+  <p>You can see this in the way I asked the question. I was rather apologetic in my phrasing. I didn't even realize this until a supportive friend came up to me and said that my survey was missing a response. I had <i>"Of course, I always drink it"</i> and <i>"I don't always drink it"</i>, but I didn't have a <i>"I never drink it"</i>. She proudly proclaimed that she never drinks the last 10%, and she is not afraid to say it.
+  <p>I was in awe. </p>
+  <p>It turns out I was not alone after all. By my calculation <i>(stats majors, avert your eyes, I'm breaking all rules of statistical signifiance)</i> there's at least <b>1000</b> students on campus right now who don't always drink the whole thing.</p>
+  <br>
+  <div class="ct-chart ct-perfect-fourth"></div>
+  <h1>Why Staff/Student?</h1>
+  <p>You might be wondering why I included the second question. I was mostly just wondering how many people who take this survey are non-students. I did not expect to find a different pattern among staff vs students. I chose to show the results as a stacked bar chart though, because something quite misleading happens when you look at the data as a pie chart.</p>
+  <p>This was the default Google forms summary display:</p>
+  <img src="media/4_bad_pie.png">
+  <p>Do you see the coincidence? This summary implies that there's some connection between not finishing your coffee, and not being a student! They're the exact same number of responses! Of course, that doesn't mean that everyone who said they aren't a student also said they don't finish their coffee. The numbers just happened to line up that way. I was a bit dissapointed this wasn't the case (<i>think of the scandelous headlines we could have had).</i></p>
+  <h1>"Heck Yeah" ?</h1>
+  <p>Now why did I give a yes or no question 3 answers? If you asked me that while we walked towards each other going in opposite directions on our way to our classes in the hallway, I'd say <i>"It's more fun that way!"</i> before breaking eye contact and walking briskly away.</p>
+  <p>The longer answer is that this was really important to me. Every other survey had a blank space where you could write a custom answer. It was a chance to express yourself, and I'd often discover or learn things I'd never thought of. Most surveys don't have this, because it means analyzing the data is harder. I wanted to give people at least some sense of expression.</p>
+  <p>So today we learned that most St. Olaf students are pretty okay with being students.</p>
+  <p>And if you don't always finish your coffee, you are not alone in this world. There is nothing wrong with you, no matter what they say.</p>
+  <p><i>&ndash; Omar</i></p>
+	
+
+</div>
+<script type="text/javascript">
+	// Compute how many minutes to read 
+	var wordCount = document.querySelector(".article").textContent.split(" ").length;
+	var minutes = Math.round(wordCount / 200);
+	document.querySelector("#minutes_read").innerHTML = String(minutes);
+	
+  function GraphData(data){
+
+    new Chartist.Bar('.ct-chart', {
+      labels: ['Yes I finish it', 'Not always'],
+      series: [
+        {name: 'Happy Student', data: data['happy_student']},
+        {name: 'Sad Student', data: data['sad_student']},
+        {name: 'Staff or Faculty', data: data['staff']}
+      ]
+    }, {
+      stackBars: true,
+      onlyInteger: true,
+      axisY: {
+        labelInterpolationFnc: function(value) {
+          return Math.floor(value);
+        }
+      },
+      plugins: [
+            Chartist.plugins.legend()
+        ]
+    }).on('draw', function(data) {
+      if(data.type === 'bar') {
+        data.element.attr({
+          style: 'stroke-width: 30px'
+        });
+      }
+    });
+  }
+  
+
+  // Load the clean data! 
+  fetch("../data/4_Last_Bit_Of_Coffee.csv")
+    .then(res => res.blob())
+    .then(res => {
+        Papa.parse(res, {
+            complete: function(results) { 
+              var data = {'happy_student':[0,0],'sad_student':[0,0],'staff':[0,0]};
+              for(var i=1;i<results.data.length;i++){
+                var datum = results.data[i];
+                var category;
+                if(datum[2] == "Nope.")
+                  category = data['staff'];
+                if(datum[2] == "Sadly yes.")
+                  category = data['sad_student'];
+                if(datum[2] == "Heck yeah!")
+                  category = data['happy_student'];
+
+                if(datum[1].indexOf("Of course") >= 0){
+                  category[0] += 1;
+                } else {
+                  category[1] += 1;
+                }
+              }
+
+              // Graph it 
+              GraphData(data)
+
+
+            }
+          })
+     })
+        
+
+
+</script>
+</body>
+</html>
