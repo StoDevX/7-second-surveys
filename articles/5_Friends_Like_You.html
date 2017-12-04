@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>7 Second Surveys</title>
+	<link rel = "stylesheet" type = "text/css" href = "../style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"> 
+  <script src="../papaparse.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <script src="lib/chartist-plugin-legend.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  
+  <meta charset="utf-8"/>
+  <style type="text/css">
+  .nodelabel {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  }
+  .hidden {
+    opacity: 0;
+  }
+  .link {
+    stroke: rgba(0,0,0,0.5);
+    fill: none;
+  }
+  </style>
+</head>
+<body>
+
+<div class="article">
+	<h1 class="centered-text title-top"><a href="/7-second-surveys">7 Second Survey Series</a></h1>
+	<p class="centered-text title-bottom faded-text"> <i>The questions no one cares about, but everyone's wondering</i></p>
+	</br>
+	<h1 id="story-title">Friends Like You</h1>
+	<span id="byline"><span id="minutes_read"></span> min read &ndash; November 27th 2017</span>
+	<p>The question was:</p>
+  <img src="media/friends_like_you.png">
+  <p><i>Raw data available <a href="https://github.com/StoDevX/7-second-surveys/tree/master/data">here</a></i>.</p>
+  <p>My goal with this question was to attempt to map out some sort of social structure on campus. As a computer science major, I noticed my freshman year that all the people I considered friends were almost all exclusively CS majors, and my conversations all revolved around computers one way or another.</p>
+  <p>I figured I had to be an outlier. This is a well-rounded liberal arts campus after all. I still wanted to find out, do certain types of majors draw certain kinds of people? Are some majors just incompatible? Could there be some sort of social segregation based on major?</p>
+  <p>I attempted to visualize this by drawing all the connections. The thicker the connection, the more people asociated with that link:</p>
+  <div id="graph"></div>
+  <p>Take a moment to explore this graph. Hovering over any node will hide all other nodes and just show you the connections of that node. You can also click and drag to move the nodes around.</p>
+  <p>Some of these connections aren't too surprising. For example, <b>Japanese connects just to Asian Studies and Philosophy</b>, while <b>Biology</b> seems to be pretty well connected. We could conclude that the majors in the center with the most connections have the most diverse friends, whereas those on the outskirts tend to only talk to those like them, but there's a problem with this kind of statement. It's a problem I've always kind of skipped over every time, but it's far too glaring in this dataset not to talk about.</p>
+  <h1>Sample Sizes</h1>
+  <p>Notice how almost all of the lines are of the same thickness. Perhaps only biology and its connections have thicker lines. That means every one of those connections is just one person. It's impossible to draw a conclusion about the relationship between maths & physics students when we only have one connection between those (despite the fact that more than 1 math major filled out the survey).</p>
+  <p>Fret not! This doesn't mean our data is completely useless. One thing we can say is that the most connected majors are likely just the most <i>popular</i> majors. This is a potential sign that the friend networks at St. Olaf are pretty evenly distributed, and that if we got more people to fill this out, we'd find more majors have as many connections as Biology or Psychology.</p>
+  <p>The other interesting thing to notice about this data is what is <i>NOT</i> present. Notice <b>how many majors have no self connection</b>. </p>
+  <h1>Lonely Majors</h1>
+  <p>I was completely surprised to see a lot of responses of people whose closest friends weren't in their own major. In fact only <b>45%</b> of people (33 out of 73) had someone in their own major in their list of close friends.</p>
+  <p>You can see this in the graph by looking at the self edges. Notice how <b>Computer Science & Music</b> have very strong self edges, while <b>Biology</b>, despite being a popular major, has a very weak self edge.</p>
+  <p>I think of these as <i>The Lonely Majors</i> because I just can't imagine what it's like to go to class every day and be surrounded with people you have no strong connections with. It's strange to me because, at least in my case, these are the people I spend the most time with.</p>
+  <p>I wonder if it has anything to do with the culture associated with certain majors. Computer Science is often seen not just as a career but as a hobby. </p>
+  <p>Now I <i>really</i> want to expand on this study to see if this phenomenon persists as we increase the sample.</p>
+  <h1>History Majors</h1>
+  <p>There's no particular reason I chose to ask specifically about history majors other than the fact that I realized I couldn't name a single one, and neither could anyone in my circle of friends (there turns out to be no connections in the data between CS and History, so perhaps this is to be expected).</p>
+  <p>Out of a total of <b>73</b> responses, people collectively knew <b>134</b> history majors. Which isn't too bad considering there's only <a href="https://www.stolaf.edu/directory/search?major=History">48 history majors</a> on campus. </p>
+  <p>The average ole knows about <b>2</b> history majors. </p>
+  <p>This summary would imply that History is pretty well connected among the social fabric of campus, but the graph contradicts it (go back and check the connections on History). Here's another way we can look at this data:</p>
+  <h2 class="centered-text">How many people know N history majors?</h2>
+  <div class="ct-chart ct-perfect-fourth"></div>
+  <p>You can see that the majority of people know either 0 or 1 history majors.</p>
+  <!--
+   
+   -->
+  <h1>Who Cares?</h1>
+  <p>I obviously do. But I think so should you. The idea that we all have something to gain from people we might have little in common with is foundational to the liberal arts education. You can force people to take classes in different departments, but that might not translate to actual connections.</p>
+  <p>St. Olaf does a lot of really awesome Math-Bio collaborations. You can see a strong connection there in the graph. </p>
+  <p>I wish there was a tighter connection between art & CS. It really bothers me seeing a lot of art projects stifled because of a lack of technological expertise, while on the other side of campus, talented programmers struggle to put together well designed products.</p>
+  <p>Why do certain majors have such strong connections all around while others continue to be isolated? I think being able to articulate this can bring us closer together as a community.</p>
+  <p>And if you're not a history major, perhaps you can go out of your way to find one and say hi. <i>(If you are a history major, it might help to hold a sign or something...)</i></p>
+  <!-- 
+    * Lots of stereotypes exist because of segregation 
+    This goes beyond numbers. 
+  -->
+  <p><i>&ndash; Omar</i></p>
+	
+
+</div>
+<script type="text/javascript">
+	// Compute how many minutes to read 
+	var wordCount = document.querySelector(".article").textContent.split(" ").length;
+	var minutes = Math.round(wordCount / 200);
+	document.querySelector("#minutes_read").innerHTML = String(minutes);
+	
+ 
+  var GraphData = function(data){
+    
+
+    new Chartist.Bar('.ct-chart', {
+      labels: data.history_majors ,
+      series: [ data.num_of_people  ]
+      }, {
+      seriesBarDistance: 1,
+      axisX: {
+        offset: 60
+      },
+      axisY: {
+        offset: 80,
+        labelInterpolationFnc: function(value) {
+          return value + ' people'
+        },
+        onlyInteger: true,
+        scaleMinSpace: 15
+      }
+    });
+  }
+
+  // Load the history majors! 
+  fetch("../data/5_History_Majors.csv")
+    .then(res => res.blob())
+    .then(res => {
+        Papa.parse(res, {
+            complete: function(results) { 
+             var num_of_people = [];
+             var history_majors = [];
+             for(var i=1;i<results.data.length-1;i++){
+              num_of_people.push(Number(results.data[i][0]))
+              history_majors.push(results.data[i][1] + " history majors")
+             }
+             GraphData({num_of_people:num_of_people,history_majors:history_majors})
+            }
+          })
+     })
+
+  fetch("../data/5_Edges_And_Nodes.json",{
+        method:'get'
+    })
+  .then(function(response){
+      return response.json();
+  })
+  .then(function(graph_data){
+    initGraph(graph_data);
+  })
+        function SelfEdge(d) {
+          var x1 = d.source.x,
+              y1 = d.source.y,
+              x2 = d.target.x,
+              y2 = d.target.y,
+              dx = x2 - x1,
+              dy = y2 - y1,
+              dr = Math.sqrt(dx * dx + dy * dy),
+
+              // Defaults for normal edge.
+              drx = dr,
+              dry = dr,
+              xRotation = 0, // degrees
+              largeArc = 0, // 1 or 0
+              sweep = 1; // 1 or 0
+
+              // Self edge.
+              if ( x1 === x2 && y1 === y2 ) {
+                // Fiddle with this angle to get loop oriented.
+                xRotation = -45;
+
+                // Needs to be 1.
+                largeArc = 1;
+
+                // Change sweep to change orientation of loop. 
+                //sweep = 0;
+
+                // Make drx and dry different to get an ellipse
+                // instead of a circle.
+                drx = 30;
+                dry = 20;
+
+                // For whatever reason the arc collapses to a point if the beginning
+                // and ending points of the arc are the same, so kludge it.
+                x2 = x2 + 1;
+                y2 = y2 + 1;
+              } 
+
+         return "M" + x1 + "," + y1 + "A" + drx + "," + dry + " " + xRotation + "," + largeArc + "," + sweep + " " + x2 + "," + y2;
+        }
+
+    function initGraph(dataset){
+       var w = 1000;
+        var h = 600;
+        var linkDistance=100;
+
+        var colors = d3.scale.category20();
+
+     
+        var svg = d3.select("#graph").append("svg").attr({"width":w,"height":h});
+
+        var force = d3.layout.force()
+            .nodes(dataset.nodes)
+            .links(dataset.edges)
+            .size([w,h])
+            .linkDistance([linkDistance])
+            .charge([-500])
+            .theta(0.1)
+            .gravity(0.05)
+            .start();
+
+     
+
+        // var edges = svg.selectAll("line")
+        //   .data(dataset.edges)
+        //   .enter()
+        //   .append("line")
+        //   .attr("id",function(d,i) {return 'edge_'+i})
+        //   .attr('marker-end','url(#arrowhead)')
+        //   .style("stroke","#ccc")
+        //   .attr("stroke-width",function(d){ return (d.value == 1) ? 1 : 5; })
+        //   .style("pointer-events", "none");
+         var edges = svg.selectAll("line")
+          .data(dataset.edges)
+          .enter()
+          .append("path")
+          .attr("class","link")
+          .attr("id",function(d,i) {return 'edge_'+i})
+          .attr("stroke-width",function(d){ return (d.value == 1) ? 1 : 5; })
+          // .attr("id",function(d,i) {return 'edge_'+i})
+          // .attr('marker-end','url(#arrowhead)')
+          // .style("stroke","#ccc")
+          // .attr("stroke-width",function(d){ return (d.value == 1) ? 1 : 5; })
+          // .style("pointer-events", "none");
+        
+        var nodes = svg.selectAll("circle")
+          .data(dataset.nodes)
+          .enter()
+          .append("circle")
+          .attr({"r":15})
+          .attr("id",function(d,i) {return 'node_'+d.name.split(" ")[0]})
+          .style("fill",function(d,i){return colors(i);})
+          .call(force.drag)
+          .on("mouseover",function(d,i){
+            // Hide all nodes
+            svg.selectAll("circle").attr("class","hidden");
+            // And all edges 
+            svg.selectAll(".link").attr("class","hidden link");
+            // And all labels
+            svg.selectAll(".nodelabel").attr("class","hidden nodelabel");
+            // Except for this one and its edges 
+            var name = d.name.split(" ")[0]
+            svg.select("#node_" + name).attr("class","")
+            svg.select("#label_" + name).attr("class","nodelabel")
+            // Get the edge connections 
+            var nodes_to_show = [];
+            for(var j=0;j<dataset.edges.length;j++){
+              if(dataset.edges[j].source.name == d.name || dataset.edges[j].target.name == d.name){
+                svg.select("#edge_" + j).attr("class","link")
+                nodes_to_show.push(dataset.edges[j].source)
+                nodes_to_show.push(dataset.edges[j].target)
+              }
+            }
+            
+            for(var j=0;j<nodes_to_show.length;j++){
+              var n = nodes_to_show[j];
+              var name = n.name.split(" ")[0]
+              svg.select("#node_" + name).attr("class","")
+              svg.select("#label_" + name).attr("class","nodelabel")
+            }
+
+          })
+          .on("mouseout",function(d){
+            // Show all again
+            svg.selectAll("circle").attr("class","");
+            svg.selectAll(".link").attr("class","link");
+            svg.selectAll(".nodelabel").attr("class","nodelabel");
+          })
+
+
+        var nodelabels = svg.selectAll(".nodelabel") 
+           .data(dataset.nodes)
+           .enter()
+           .append("text")
+           .attr("id",function(d,i){return "label_" + d.name.split(" ")[0]})
+           .attr({"x":function(d){return d.x;},
+                  "y":function(d){return d.y;},
+                  "class":"nodelabel"})
+           .style("pointer-events", "none")
+           .text(function(d){return d.name;});
+
+
+        force.on("tick", function(){
+
+            edges.attr({"x1": function(d){return d.source.x;},
+                        "y1": function(d){return d.source.y;},
+                        "x2": function(d){return d.target.x;},
+                        "y2": function(d){return d.target.y;}
+            });
+            edges.attr("d",SelfEdge)
+
+            nodes.attr({"cx":function(d){return d.x;},
+                        "cy":function(d){return d.y;}
+            });
+
+            nodelabels.attr("x", function(d) { return d.x; }) 
+                      .attr("y", function(d) { return d.y; });
+
+           
+
+          
+        });
+    }
+
+
+</script>
+</body>
+</html>
