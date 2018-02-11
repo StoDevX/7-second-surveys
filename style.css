@@ -1,12 +1,15 @@
 /* Inspired by distill.pub */
 body {
 	font-family: HoeflerText-Regular,Cochin,Georgia,serif;
+	margin: 0px;
 }
 
 .article {
 	width: 640px;
 	margin-left: auto;
 	margin-right:auto;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 img {
 	max-width: 100%;
@@ -212,4 +215,27 @@ Styled table
     padding: 2px 12px;
     display: block;
   }
+}
+
+#header {
+	box-shadow: 0 1px 4px rgba(0,0,0,.15);
+	background: white;
+	display: inline-block;
+	width: 100%;
+}
+
+#subscribe {
+	margin-left: 50px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 20px;
+	float: left;
+}
+
+#propose {
+	margin-right: 50px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 20px;
+	float: right;
 }
