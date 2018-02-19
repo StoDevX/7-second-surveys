@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>7 Second Surveys</title>
+	<link rel = "stylesheet" type = "text/css" href = "../style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"> 
+  <script src="../papaparse.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <script src="lib/chartist-plugin-legend.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  
+  <meta charset="utf-8"/>
+  <style type="text/css">
+  .nodelabel {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  }
+  .hidden {
+    opacity: 0;
+  }
+  .link {
+    stroke: rgba(0,0,0,0.5);
+    fill: none;
+  }
+  /* Style chartist */
+  /* Pie charts consist of solid slices where you can use this selector to override the default style. */
+  .ct-series-a .ct-slice-pie {
+    /* fill of the pie slieces */
+    fill: hsl(120, 40%, 60%);
+    /* give your pie slices some outline or separate them visually by using the background color here */
+    stroke: white;
+    /* outline width */
+    stroke-width: 4px;
+  }
+
+  .ct-chart-pie .ct-label {
+    font-size: 20px;
+  }
+
+  #predict-bed-chart .ct-series-a .ct-slice-pie{
+    fill: hsl(120, 40%, 60%);
+    opacity: 0.8;
+  }
+  #predict-bed-chart .ct-series-b .ct-slice-pie{
+    opacity: 0.8;
+  }
+  #predict-bed-chart {
+    margin-bottom: 100px;
+  }
+  #predict-bed-chart svg {
+    top:50px;
+  }
+  /* Custom legend colors */
+  .ct-legend li.ct-series-0:before {
+    background-color: hsl(120, 40%, 60%);
+    border-color: hsl(120, 40%, 60%);
+  }
+
+  .ct-legend li.ct-series-1:before {
+      background-color: #f05b4f;
+      border-color:  #f05b4f;
+  }
+
+  /* Legend colors for reasons bar chart */
+  #reasons-chart svg {
+    top:70px;
+  }
+  #reasons-chart {
+    margin-bottom: 140px;
+  }
+  #reasons-chart .ct-legend li.ct-series-0:before {
+    background-color: #FFAB0D;
+    border-color: #FFAB0D;
+  }
+  #reasons-chart .ct-series-a .ct-bar {
+    stroke:#FFAB0D;
+  }
+
+  #reasons-chart .ct-legend li.ct-series-1:before {
+      background-color: #E8640C;
+      border-color: #E8640C;
+  }
+  #reasons-chart .ct-series-b .ct-bar {
+    stroke:#E8640C;
+  }
+
+  #reasons-chart .ct-legend li.ct-series-2:before {
+      background-color: #A61300;
+      border-color: #A61300;
+  }
+  #reasons-chart .ct-series-c .ct-bar {
+    stroke:#A61300;
+  }
+
+  #reasons-chart .ct-legend li.ct-series-3:before {
+      background-color: #E80C8B;
+      border-color: #E80C8B;
+  }
+  #reasons-chart .ct-series-d .ct-bar {
+    stroke:#E80C8B;
+  }
+
+  #reasons-chart .ct-legend li.ct-series-4:before {
+      background-color: #B200FF;
+      border-color: #B200FF;
+  }
+  #reasons-chart .ct-series-e .ct-bar {
+    stroke:#B200FF;
+  }
+/*  #reasons-chart .ct-series-e .ct-bar {
+    stroke:#B200FF;
+  }*/
+
+  </style>
+</head>
+<body>
+<div id="header">
+  <p id="subscribe"><a href="http://eepurl.com/dizkM9">Subscribe</a></p>
+  <p id="propose"><a href="https://goo.gl/forms/G9wdPinKjVU3jDOv2">Propose a Question</a></p>
+</div>
+<div class="article">
+	<h1 class="centered-text title-top"><a href="/7-second-surveys">7 Second Survey Series</a></h1>
+	<p class="centered-text title-bottom faded-text"> <i>The questions no one cares about, but everyone's wondering</i></p>
+	</br>
+	<h1 id="story-title">Make Your Bed</h1>
+	<span id="byline"><span id="minutes_read"></span> min read &ndash; February 19th 2018</span>
+	<p>The question was:</p>
+  <img src="media/make_your_bed.png">
+  <p><i>Raw data available <a href="https://github.com/StoDevX/7-second-surveys/tree/master/data/6_Make_Your_Bed.csv">here</a></i>.</p>
+ <!--  <p>[This question first occured to me one morning while making the bed. I was already late and had to run out, but I simply could not leave my bed unmade. What kind of cruel monster was I? To come home to a messy room was the ultimate downfall. So I made it] [play up the drama]</p> -->
+ <p>This question occurred to me one morning while making my bed. I was already late and had to run out, but I just could not bring myself to leave my bed in such a chaotic state. I imagined myself coming home to sheets strewn about and finding death & decay abound. As I reflected about how my sense of self worth was intimately tied to the tidyness of my sheets, I began to wonder if I was alone in this experience.</p>
+ <p>I realized that I did not know a single person who makes their sheets every morning. All the people that I knew intimately enough to know this fact about them just happened to not make their bed. With everyone else, this wasn't really a question that ever came up. Was I just a rare enigma in this world <i>(certainly one of my aspirations)</i> or were there others who felt strongly about this too? </p>
+  <h1>People <i>Do</i> Make Their Beds</h1>
+  <p>In fact, almost 50% of Ole's make their beds every morning!</p>
+  <div class="ct-chart ct-perfect-fourth" id="make-bed-chart"></div>
+  <p>This was very surprising to me, and statistically should be surprising to you too. Almost no one expected that other people regularly make their bed.</p>
+  <div class="ct-chart ct-perfect-fourth" id="predict-bed-chart"></div>
+  <p>I almost always try to make a prediction about the results before I send out the survey. I started doing this after finding that some of the results looked obvious and that the survey didn't seem very insightful. But of course it will always seem obvious in retrospect. I try to come up with a hypothesis and think through whether the data will confirm or deny it. If I find that my belief in the hypothesis doesn't change regardless of the outcome, then something is broken with the design of the survey.</p>
+  <!-- <p>[I find it always fun to make a prediction about the data before I collect it. It's a quick thought experment to make sure I'm learning something new from the study. I make a hypothesis and think about what result would confirm or deny it. If I find that my opinion does not change regardless of the outcome, then I need to rework the survey.]</p>
+  <p>Something fun I like doing before sending out each survey is to try and make a prediction about the results. I try to make a hypothesis and think through whether the data will confirm or deny iy. It's a way of ensuring that the survey </p> -->
+  <!-- <p>[I expected people to predict that people were like them. I expected those who do make their bed to say they thought everyone made their bed, and those who don't to say they don't. Or I expected the opposite, everone thinks they're special, so if you amke the bed you think others don't and vice versa. Turns out, despite the fact that a LOT of people make their bed, no one thinks anybody makes their bed]</p>
+    <p>[INSERT PIE CHART of predictions]</p>
+   -->
+  <p>What I expected to find was that people who make their bed would predict that others probably do so too, and that those who don't would predict that they don't. This was what I called the <b>Common Person</b> hypothesis, that people believe that their actions are normal and that others are most likely to behave the way they do. Another hypothesis was that everyone who made their bed would predict others won't and vice versa. I called this the <b>Extraordinary Masses</b> - where everyone believes they are special.</p> 
+  <p>It seems that neither is true. You can see in the table below that very few people believe others make their bed, regardless of whether or not they make their own bed.</p>
+  <table>
+    <tr>
+      <th></th>
+      <th>My Bed is Made</th>
+      <th>My Bed is Messy</th>
+    </tr>
+    <tr>
+      <td><b>I Predict Made</b></td>
+      <td>16</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td><b>I Predict Messy</b></td>
+      <td>60</td>
+      <td>79</td>
+    </tr>
+  </table>
+  <p>Which to me means that most people who don't make their bed feel like it's normal, while those who do make their bed are silent about it.</p>
+  <h1>Wisdom of the Crowds</h1>
+  <p>There's another reason I wanted to ask people to predict others' answers. This one comes out of the popular game <a href="http://blog.eyewire.org/about/">EyeWire</a> currently being developed at Princeton. It's a game where hundreds of thousands of players are entrusted with reconstructing brain data from raw scans, with the goal of doing for the brain what the human genome project did for DNA.</p>
+  <p>In a setting like that, you want to ensure that you're getting correct answers from a large group of people even if there aren't a lot of experts. In a paper called <a href="http://seunglab.org/wp-content/uploads/2015/07/FindingTruth16-copy.pdf">Finding Truth Even if the Crowd is Wrong</a>, they talk about not just asking people what they think the answer is, but also <i>what they think other people think</i>.</p>
+  <p>Here's how it works. Suppose the question is</p>
+  <blockquote>Is Philadelphia the capital of Pennsylvania?</blockquote>
+  <p>If there aren't a lot of experts in the crowd, most would answer "Yes". Philadelphia sounds like an important city and most people know it's in Pennsylvania. These people would also likely predict that others would say "Yes".</p>
+  <p>Those who actually know that the capital is Harrisburg would answer "No". These experts would know that this is a common misconception and would thus predict that most answers would be "Yes". It is this discrepency between answer and prediction that gives us a way to extract the truth from the crowd.</p>
+  <p>This is a very different situation from the one in this survey, but I was absolutely fascinated by this idea that asking people to predict what others think the answer will be gives us this powerful extra insight, and it might be something to revisit in future surveys.</p>
+  <h1>But Why Make Your Bed?</h1>
+  <p>What I thought was most absolutely bizarre were the <i>reasons</i> why people weren't making their bed. I labelled each reason submitted with one of the following 4 categories. You can <a href="https://github.com/StoDevX/7-second-surveys/blob/master/data/6_Make_Your_Bed_Clean.csv">see the full data with the labels I applied here</a>.</p>
+  <div class="ct-chart ct-perfect-fourth" id="reasons-chart"></div>
+  <p><b>Moral obligation</b> were those who, like me, felt that making the bed brought them some peace of mind. <b>Hurry or lazy</b> were mostly people who would do it if they had extra time or motivation. <b>Lofted</b> were people who found it too physically hard to make a lofted bed (a perfectly valid excuse).</p>
+  <p>Pay attention to the orange segment. That's <b>ephemeral pleasure</b> - this argument that <i>"Why make the bed if it's just going to get messy again?"</i></p>
+  <p>I absolutely cannot understand this line of thinking.</p>
+  <p>Most things in life don't last, but they're still worth doing. We live in an eternal struggle against entropy. The world will always tend towards disorder. Our lives are short and our joy is transient. We do things not because they will last, but because there's value in creating a world we all want to live in.</p>
+  <p>I think it's worthwhile to bake a beautiful cake even if it will be gone over a meal. I think it's worthwile to get to know people intimately even if they'll be gone out of your life in less than a semester. I think it's worthwhile to build elaborate surveys even if it will all be buried one day.</p>
+  <p>I think it's worthwhile to make your bed even if it's going to be messed up again <i>(if that makes you happy)</i>. I want you to know you're not alone.</p>
+  <!-- 
+    * Pie chart number of people who do and do not make their beds.
+    * Table of predictions 
+    * But why? Is the most interesting. 
+        * isolate a couple of reasons and talk about them. 
+        * 
+    * What do people think other people do? 
+      * The wisdom of the crowds research from Seung lab
+      * You're not alone. 
+    *  [Background on why I asked this question] I make my bed everyday. It's crucial for me. Started with mom's praise. 
+  -->
+  <p><i>&ndash; Omar</i></p>
+	
+
+</div>
+<script type="text/javascript">
+	// Compute how many minutes to read 
+	var wordCount = document.querySelector(".article").textContent.split(" ").length;
+	var minutes = Math.round(wordCount / 200);
+	document.querySelector("#minutes_read").innerHTML = String(minutes);
+	
+  function Graph(results){
+    
+    var data = {
+      series: [0, 0],
+      labels: ["Make Bed","Messy Bed"]
+    };
+
+    var data_predict = {
+      series: [0,0],
+      labels: ["Predicted Make","Predicted Messy"],
+    }
+
+    var data_reasons = {
+      labels:['My bed is made','My bed is messy'],
+      series:[]
+    }
+    var found_reason = {};
+
+    // Count number of make and messy
+    for(var i=1;i<results.data.length;i++){
+      var d = results.data[i];
+      // Own bed
+      if(d[0] == "True"){
+        data.series[0] += 1;
+      } else {
+        data.series[1] += 1
+      }
+      // Predict others bed
+      if(d[2] == "True"){
+        data_predict.series[0] += 1;
+      } else {
+        data_predict.series[1] += 1;
+      }
+      // Reason
+      var reason = d[3]
+      if(reason != "" && reason != undefined){
+        if(reason == 'aesthetics')
+          reason = 'moral obligation'
+
+        reason = reason.toLowerCase()
+
+        if(found_reason[reason] == undefined){
+          found_reason[reason] = {name:reason,data:[0,0]};
+        }
+        if(d[0] == "True"){
+          found_reason[reason].data[0] ++;
+        } else {
+          found_reason[reason].data[1] ++;
+        }
+      }
+
+      //found_reason[reason].data.push()
+
+    }
+    // Add all the reasons as data series 
+    for(var reason in found_reason){
+      if(reason != 'uncategorized')
+        data_reasons.series.push(found_reason[reason])
+    }
+    //Make sure uncategorized is at the end 
+    data_reasons.series.push(found_reason['uncategorized'])
+
+    var sum = function(a, b) { return a + b };
+
+    new Chartist.Pie('#make-bed-chart', data, {
+      labelInterpolationFnc: function(value,idx) {
+        value = data.series[idx]
+        return data.labels[idx] + "(" + String(value) + " people) ";
+        //return data.labels[idx] + " (" + String(Math.round(value / data.series.reduce(sum) * 100) + '%') + ") ";
+      }
+    });
+
+    // Now the predict pie chart 
+
+    new Chartist.Pie('#predict-bed-chart', data_predict, {
+      plugins: [
+            Chartist.plugins.legend({clickable:false})
+        ],
+      labelInterpolationFnc: function(value,idx) {
+        value = data_predict.series[idx]
+        return "(" + String(value) + " people) ";
+        //return data.labels[idx] + " (" + String(Math.round(value / data.series.reduce(sum) * 100) + '%') + ") ";
+      }
+    });
+
+    console.log(data_reasons)
+
+    // Now the reasons bar chart 
+    new Chartist.Bar('#reasons-chart', {
+      labels: data_reasons.labels ,
+      series: data_reasons.series
+      },  {
+      stackBars: true,
+      onlyInteger: true,
+      axisY: {
+        labelInterpolationFnc: function(value) {
+          return Math.floor(value);
+        }
+      },
+      plugins: [
+            Chartist.plugins.legend({clickable:false})
+        ]
+    }).on('draw', function(data) {
+      if(data.type === 'bar') {
+        data.element.attr({
+          style: 'stroke-width: 30px'
+        });
+      }
+    });
+  }
+
+  // Load the history majors! 
+  fetch("../data/6_Make_Your_Bed_Clean.csv")
+    .then(res => res.blob())
+    .then(res => {
+        Papa.parse(res, {
+            complete: function(results) { 
+
+             Graph(results)
+            }
+          })
+     })
+
+  
+
+
+</script>
+</body>
+</html>
