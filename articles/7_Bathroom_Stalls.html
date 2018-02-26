@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>7 Second Surveys</title>
+	<link rel = "stylesheet" type = "text/css" href = "../style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"> 
+  <script src="../papaparse.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <script src="lib/chartist-plugin-legend.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  
+  <meta charset="utf-8"/>
+  <style type="text/css">
+    .nodelabel {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  }
+  .hidden {
+    opacity: 0;
+  }
+  .link {
+    stroke: rgba(0,0,0,0.5);
+    fill: none;
+  }
+  /* Style chartist */
+  /* Pie charts consist of solid slices where you can use this selector to override the default style. */
+  .ct-series-a .ct-slice-pie {
+    /* fill of the pie slieces */
+    fill: #ffa257;
+  }
+
+  .ct-chart-pie .ct-label {
+    font-size: 18px;
+  }
+
+  </style>
+</head>
+<body>
+<div id="header">
+  <p id="subscribe"><a href="http://eepurl.com/dizkM9">Subscribe</a></p>
+  <p id="propose"><a href="https://goo.gl/forms/G9wdPinKjVU3jDOv2">Propose a Question</a></p>
+</div>
+<div class="article">
+	<h1 class="centered-text title-top"><a href="/7-second-surveys">7 Second Survey Series</a></h1>
+	<p class="centered-text title-bottom faded-text"> <i>The questions no one cares about, but everyone's wondering</i></p>
+	</br>
+	<h1 id="story-title">Bathroom Stalls</h1>
+	<span id="byline"><span id="minutes_read"></span> min read &ndash; February 26th 2018</span>
+	<p>The question was:</p>
+  <img src="media/bathroom_stalls.png">
+  <p><i>Raw data available <a href="https://github.com/StoDevX/7-second-surveys/tree/master/data/7_Bathroom_Stalls.csv">here</a></i>.</p>
+  <p>This question is special. Partly because each question is its own unique individual and they're all special little snowflakes to me, but also because this is the first question in this series that originated as a community suggestion! Ruby Kramer wanted to find out exactly which stall do people tend to choose in public restrooms. Perhaps this knowledge will help her feel a sense of solidarity with her fellow Ole's in a decision that we're all confronted with every day (or perhaps she just wanted to avoid other people?) In any case, I accepted the challenge. </p>
+  <h1>Middle Stall</h1>
+  <p>According to <a href="http://www.businessinsider.com/which-stall-toilet-nearest-public-bathroom-2016-8">science</a> the middle choice is the most popular option. So it was surprising that that wasn't the case for our community.</p>
+  <div class='graph-label'>Stall Choice Among Oles</div>
+  <div class="ct-chart ct-perfect-fourth" id="stall-choice"></div>
+  <p>The middle choice <i>is</i> the most popular, but the stall closest to the entrance is almost just as popular, and the handicap stall isn't too far behind. "Other" were some choices like the one "closest to the sink" or just "the cleanest looking stall". </p>
+  <p>In the <a href="http://pages.ucsd.edu/~nchristenfeld/Publications_files/Choices.pdf">paper</a> they found that <b>60%</b> of people use the middle stall. In our data it looks like they're all equally likely (with the handicap stall being used less just because people feel bad using it).</p>
+  <p>This is very interesting to me because this is another case where people are trying to predict the most popular choice (which I touched on in <a href="/articles/6_Make_Your_Bed.html">last week's question</a>). Most people are trying to go to the stall used least often, so if it becomes common knowledge that the middle one is the most popular, it will cease to be.</p>
+  <p>It would be very interesting to perform a study on how these studies change people's choices, and if this changes over time. The way the original study obtained this data was by conspiring with the custodian to count toilet paper usage, which would correlate with stall usage. (So if you're a SO/AN major looking for the next big idea, you're welcome).</p>
+  <p>Another relevant piece of research I wanted to share, this one brought to my attention by  Visiting Assistant Professor of Norwegian Kyle Korynta, is <a href="http://www.urinalman.com/">Urinal Man</a>. This is an ongoing study collecting peoples' responses in this cute little simulator.</p>
+  <img src="media/urinal_man.png">
+  <p>According to the website, they've collected 2,780,847 data points to date! Although that the website is full of ads suggests to me that it's outgrown its research utility and is now more of a fun side project.</p>
+  <h1>How do you choose?</h1>
+  <p>Now Ruby wasn't just interested in learning <i>what</i> choices people made, she also wanted to know how many people really put any sort of thought into this, which is what I tried to gather from the second question. Out of a total of <b>129</b> answers there were <b>60</b> responses to the optional question.</p>
+  <p>While there are some that couldn't justify their choices, the vast majority definitely put a lot of thought into which stall they pick. The top 3 reasons for making these choices seem to be:</p>
+  <ol>
+    <li>Looking for the cleanest stall.</li>
+    <li>Wanting more space/away from others.</li>
+    <li>Habit; picking the stall you always pick.</li>
+  </ol>
+  <p>Here are some of my favorites:</p>
+  <blockquote>I look at the reflection of the floor by the toilet and choose the stall with less pee stains on the floor</blockquote>
+  <p>This sounds like a really handy tip!</p>
+  <blockquote>In the dorm bathroom I ALWAYS choose the second stall, but I couldn't tell you why. I suppose it's a matter of comfort like how people tend to choose the same seats in a classroom. Furthermore, something about the first stall is just averse to me, but I also don't pick the handicap stall unless necessary.</blockquote>
+  <p>It actually <i>really</i> bothers me when people sit in the same seat all semester, but that's another story for another day.</p>
+  <blockquote>Minimum walking distance, consistency. If it's taken then I go to the next available stall. I don't really think that hard about it, but sometimes if I frequent a particular public restroom I'll try and exclusively use the same stall every time. It just makes me feel more comfortable, I guess? Because it's "my" stall. </blockquote>
+  <p>I admire this strong sense of ownership. </p>
+  <p>And finally:</p>
+  <blockquote>depends on my mood tbh</blockquote>
+  <p>I would <i>love</i> to interview this person. I cannot in my wildest imagination fathom what sort of mood would motivate someone to pick the middle stall over the edge. Does it have to do with how much of a hurry you're in? Do you pick the handicap stall when you're happy? Is it about the time of day?</p>
+  <p>We may never know.</p>
+  <!-- 
+      * First question submitted by the community. Thanks to all who proposed! 
+      * Contrary to popular belief, it's all evenly split. 
+        - PIE CHART
+      * How does this stack against real research? 
+        - They tracked it using toilet paper use. 
+        - If you're a SOAN major looking for the next big thing, you're welcome. 
+      - Urine man 
+
+      * Ruby's intention to find out how many people even thought of this before. Out of 129, 60 filled out the optional question. Most people do seem to have elaborate reasons for picking one or the other. 
+      * Quick debate over whether this is a reasonable conclusion given this data. 
+  
+      * Now what are the reasons? Top 3: are cleanest, space and habit.  
+      * "depends on my mood tbh" What sort of mood could one possibly be in???
+      * "I look at the reflection of the floor by the toilet and choose the stall with less pee stains on the floor
+" 
+  -->
+  <p><i>&ndash; Omar</i></p>
+	
+
+</div>
+<script type="text/javascript">
+	// Compute how many minutes to read 
+	var wordCount = document.querySelector(".article").textContent.split(" ").length;
+	var minutes = Math.round(wordCount / 200);
+	document.querySelector("#minutes_read").innerHTML = String(minutes);
+	
+  function Graph(){    
+    var data = {
+      series: [30, 43, 42,14],
+      labels: ["Handicap","Middle","Entrance","Other"]
+    };
+
+    new Chartist.Pie('#stall-choice', data, {
+      labelInterpolationFnc: function(value,idx) {
+        value = data.series[idx]
+        return data.labels[idx] + "(" + String(value) + ") ";
+      }
+    });
+
+  }
+
+  Graph()
+
+  
+
+
+</script>
+</body>
+</html>

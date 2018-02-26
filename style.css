@@ -302,3 +302,9 @@ table {
 th, td {
     padding: 15px;
 }
+
+.graph-label {
+	text-align: center;
+	font-size:25px;
+	margin-bottom: 25px;
+}
