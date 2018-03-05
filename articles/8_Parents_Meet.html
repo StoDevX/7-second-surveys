@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>7 Second Surveys</title>
+	<link rel = "stylesheet" type = "text/css" href = "../style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet"> 
+  <script src="../papaparse.min.js"></script>
+
+  <meta charset="utf-8"/>
+  <style type="text/css">
+    .nodelabel {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+  }
+  .hidden {
+    opacity: 0;
+  }
+  .link {
+    stroke: rgba(0,0,0,0.5);
+    fill: none;
+  }
+  /* Style chartist */
+  /* Pie charts consist of solid slices where you can use this selector to override the default style. */
+  .ct-series-a .ct-slice-pie {
+    /* fill of the pie slieces */
+    fill: #ffa257;
+  }
+
+  .ct-chart-pie .ct-label {
+    font-size: 18px;
+  }
+
+  </style>
+</head>
+<body>
+<div id="header">
+  <p id="subscribe"><a href="http://eepurl.com/dizkM9">Subscribe</a></p>
+  <p id="propose"><a href="https://goo.gl/forms/G9wdPinKjVU3jDOv2">Propose a Question</a></p>
+</div>
+<div class="article">
+	<h1 class="centered-text title-top"><a href="/7-second-surveys">7 Second Survey Series</a></h1>
+	<p class="centered-text title-bottom faded-text"> <i>The questions no one cares about, but everyone's wondering</i></p>
+	</br>
+	<h1 id="story-title">Parents Meet</h1>
+	<span id="byline"><span id="minutes_read"></span> min read &ndash; March 5th 2018 &ndash; <a href="#disqus_thread"></a></span>
+
+	<p>The question was:</p>
+  <img src="media/parents_meet.png">
+  <p><i>Raw data for the 137 answers available <a href="https://github.com/StoDevX/7-second-surveys/blob/master/data/8_Parents_Meet.csv">here</a></i>.</p>
+  <p>Let me tell you how <i>my</i> parents met. Or rather, the story of how I learned the story of how my parents met.</p>
+  <p>I was 9 years old when I thought to ask while watching the Disney channel. There was a whole episode of <i>That's So Raven</i> where, for one reason or another, the kids were trying to find out the story of how their parents first met. They were talking about when their first date was, where it was, and so on. It seemed like such a big deal! It was perhaps the first moment they laid eyes on each other. It was the beginning of a life long journey with their chosen partner.</p>
+  <p>I got curious about my own parents' story. I started to wonder if my dad had taken my mom to somewhere nearby. Perhaps it was a restaurant I had already seen! Would the table where he proposed to her still be there? That would be such a fun thing to revisit. So I turn to my mom and I ask, <i>"Hey mom, when was your first date with dad?"</i></p>
+  <p>My mother looks back at me, puzzled. <i>"A date? There's some in the kitchen."</i> Her English was not great, and I did not know how to translate "date" in Arabic since I had just learned that word from an American TV show.</p>
+  <p>After a few minutes of trying to explain, she finally got it, <i>"Oh! No son, we don't do that here [in our culture]. We met when he came over to the house as a suitor."</i> This was bizarre to me at the time.</p>
+  <p>Here I'd like to pause and reflect on the surprising pervasiveness of western culture. I had never even left Egypt at that point in my life, and yet I had become so accustomed to the ways in which people find and express love and how relationships work overseas that it didn't occur to me that this wasn't normal. There was no table at which my dad proposed because there was no proposal. He asked if she wanted to marry, they talked about it and hung out a few times (along with the family), and then went for it (an engagement period before actually getting married for good).</p>
+  <h1>Where Do Ole's Find Love?</h1>
+  <p>I was really curious how dating has changed throughout the years. The two questions in the survey were meant to contrast how dating was like a generation (or two) ago to our generation. I've gone through and labelled each answer in the <a href="https://github.com/StoDevX/7-second-surveys/blob/master/data/8_Parents_Meet.csv">original data</a> with what category I think it fits in (as in, did they meet in college, at work etc.) If you answered "26 years or older", then your answer, along with your parents' was lumped in as "old". That, and the fact that second question was optional means we have a lot more data for "old" than for "young".</p>
+  <p>Some things haven't changed. <b>College</b> is by far the most common place where people find their significant others across generations. <b>Work</b> is the second most common for "old". The fact that <b>Work</b> isn't very common among young people suggests that many will probably go on to find love in the workplace (so if you haven't found The One yet, there seems to be hope!)</p>
+  <p>On the other side, <b>Online</b> dating is a lot more popular now than it used to be, which seems to have displaced <b>Bars</b> as a place for budding romance (and/or hookups). There was not a single young relationship that began at a bar!</p>
+  <p>I was rather surprised to see <b>Blind Dating</b> to be somewhat uncommon in the older genration, and kind of sad that it's no longer a thing (but of course, there's <a href="https://lifehacker.com/this-new-app-sets-you-up-on-blind-dates-no-swiping-or-m-1796054362">an app</a> for it now).</p>
+  <p>I encourage you to explore the data with this interactive graph, and read about people's stories. Clicking on any of the items in the legend will bring up the stories for that category below.</p>
+  <div id="stackedbar"></div>
+  <div id="stories">
+    <hr>
+    <center>
+      <p>Click on a category in the legend (above) to reveal the stories behind it here!</p>
+    </center>
+    <hr>
+  </div>
+  <h1>Does Life Turn on a Dime?</h1>
+  <p>Many of these stories are about being in the right place at the right time to fall in love and live happily ever after. Here's a couple of examples:</p>
+  <blockquote>
+  At the lake, we had cabins on the same lake - still together 38 years later :)</blockquote>
+  <blockquote>
+    Randomly assigned seats next to each other in first class on an international flight during Interim.
+  </blockquote>
+  <blockquote>
+    We met at St. Olaf! We live in the same dorm and ended up talking because of that.
+  </blockquote>
+  <p>Perhaps if your cabin was on the other side of the lake, your seat number was one digit off, or your dorm was just next door, you wouldn't be with the love of your life today.</p>
+  <p>I don't believe such events have as profound an effect on our lives as they seem. If you hadn't met this person, your life would have kept going, and you would have likely met someone else, in some mundane or fantastic way, and that'd be your story.</p>
+  <p>That your story happened to be this particular one, with this particular person, as opposed to all the other possible outcomes (of which there are many!), should not surprising. For the same reason that getting 10 heads in a row of coin flips should not be surprising. Out of all the possible sequences of 10 coin flips, 10 heads in a row is just as random and likely as any other sequence of heads and tails.</p>
+  <p>This might seem unintuitive at first, so allow me to say it another way. The chances of you getting any <i>particular</i> sequence of 10 coin tosses is very low (0.009%). But the chances of you getting <i>some</i> sequence is 100% (however you flip the coin, if you do it 10 times, you'll get 10 results).</p>
+  <p>I say all this not to take away from how special your story feels to you. On the contrary, what I hope I've convinced you of is that, while the odds of any <i>particularly</i> special thing happening in your life are very low, the odds of <i>some</i> special thing happening in your life is almost certain! In a world where things happen all the time, <a href="https://www.washingtonpost.com/opinions/the-improbability-principlewhy-coincidences-miracles-and-rare-events-happen-every-day-by-david-j-hand/2014/02/21/4d94c5d8-718d-11e3-8b3f-b1666705ca3b_story.html?utm_term=.dcbe056fe3b4">rare events are really quite common</a>. As long as you continue to live, and do things, and flip coins, the outcomes will be especially rare and unique to you.</p>
+  <p>I say this to the hopeless romantic, to not fret over losing "the one". Your odds of ending up with <i>this</i> one are tragically low.</p>
+  <p>But your odds of ending up with <i>some</i>one, look pretty good!</p>
+  <p><i>&ndash; Omar</i></p>
+	<div id="disqus_thread"></div>
+  <script>
+
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  /*
+  var disqus_config = function () {
+  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  */
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://7secondsurveys.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+
+</div>
+<script type="text/javascript" src="../plotly.min.js"></script>
+<script type="text/javascript">
+	// Compute how many minutes to read 
+	var wordCount = document.querySelector(".article").textContent.split(" ").length;
+	var minutes = Math.round(wordCount / 200);
+	document.querySelector("#minutes_read").innerHTML = String(minutes);
+	
+  function Graph(results){
+    var parent_counts = {}
+    var current_counts = {}
+    for(var i=1;i<results.data.length;i++){
+      var row = results.data[i];
+      if(row == '') continue;
+      var age = 'young';
+      if(row[2] == "26 or older.") age = 'old';
+      var current = row[5];
+      var parents = row[4];
+      
+      if(parent_counts[parents] == undefined && parents != "")
+        parent_counts[parents] = 0
+      if(current_counts[current] == undefined && current != "")
+          current_counts[current] = 0
+
+      if(age == 'young'){
+        
+
+        if(current != "") current_counts[current] ++;
+        if(parents != "") parent_counts[parents] ++;
+      } else {
+        if(parent_counts[current] == undefined && current != "")
+        parent_counts[current] = 0
+
+        if(parents != "") parent_counts[parents] ++;
+        if(current != "") parent_counts[current] ++;
+      }
+      
+
+    }
+
+    var data_array = []
+    var count_max = 10;
+    var labels = ['college','work','arranged','bar','friends','online','other/blind','other']
+
+    for(var i=0;i<labels.length;i++){
+      var key = labels[i]
+      if(count_max == 0)
+        break
+      count_max--;
+      var young = current_counts[key]
+      var old = parent_counts[key]
+      if(young == undefined || isNaN(young))
+        young = 0
+      if(old == undefined|| isNaN(old))
+        old = 0
+
+      var data = {
+        x: ['Old People', 'Young People'],
+        y: [old,young],
+        name: key,
+        type: 'bar',
+      }
+      data_array.push(data)
+    }
+    data_array.sort(function(a,b){
+      if(a.y[0] < b.y[0])
+        return 1
+      if(a.y[0] > b.y[0])
+        return -1
+      return 0
+    })
+    console.log(data_array)
+
+    // Draw chart 
+    var layout = {title:"Where Ole's Find Love",barmode: 'stack', legend:{traceorder:'normal'}};
+
+    Plotly.newPlot('stackedbar', data_array, layout);
+    
+
+    var legends = document.querySelectorAll('.legendtoggle');
+    for(var i=0;i<legends.length;i++){
+      var leg = legends[i];
+
+      (function(index,legend,data,res){
+        legend.addEventListener('click',function(evt){
+          var name = data[index].name;
+          // Get all the stories from the data 
+          var stories = []
+          for(var i=0;i<results.data.length;i++){
+            var row = results.data[i]
+            if(row[4] == name) stories.push({story:row[1],age:row[2]})
+            if(row[5] == name) stories.push({story:row[3],age:row[2]})
+            
+          } 
+          // Put stories in div
+          var NewContent = "<hr>"
+          for(var i=0;i<stories.length;i++){
+            var story = stories[i];
+            NewContent += "<blockquote>"
+            NewContent += story.story;
+            NewContent += " (" + story.age + ")"
+            NewContent += "</blockquote>"
+          }
+          document.querySelector("#stories").innerHTML = NewContent + "<hr>"
+          //document.querySelector("#stories").scrollIntoView(true)
+        })
+      })(i,leg,data_array,results)
+      
+    }
+  }
+
+  fetch("../data/8_Parents_Meet_Labelled.csv")
+    .then(res => res.blob())
+    .then(res => {
+        Papa.parse(res, {
+            complete: function(results) { 
+
+             Graph(results)
+            }
+          })
+     })
+
+</script>
+
+<script id="dsq-count-scr" src="//7secondsurveys.disqus.com/count.js" async></script>
+</body>
+</html>
